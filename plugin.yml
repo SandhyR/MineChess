@@ -1,0 +1,6 @@
+name: MineChess
+version: 1.0.0
+api: 5.0.0
+author: SandhyR
+main: SandhyR\MineChess\MineChess
+src-namespace-prefix: SandhyR\MineChess
