@@ -1,0 +1,11 @@
+
+world:
+  name: "chess"
+  pos1:
+    x: 267
+    y: 5
+    z: 251
+  pos2:
+    x: 260
+    y: 5
+    z: 258

@@ -1,0 +1,21 @@
+{
+    "name": "sandhyr/minechess",
+    "description": "A chess plugin for pocketmine",
+    "type": "project",
+    "require": {
+        "chesslablab/php-chess": "^1.5",
+        "pocketmine/pocketmine-mp": "^5.24"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "SandhyR\\MineChess\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "SandhyR",
+            "email": "sandhyraihan36@gmail.com"
+        }
+    ]
+}
