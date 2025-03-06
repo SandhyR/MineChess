@@ -2,8 +2,19 @@
 
 namespace SandhyR\MineChess;
 
+use customiesdevs\customies\block\CustomiesBlockFactory;
+use customiesdevs\customies\block\Material;
+use customiesdevs\customies\block\Model;
+use customiesdevs\customies\item\CreativeInventoryInfo;
+use pocketmine\block\Block;
+use pocketmine\block\BlockBreakInfo;
+use pocketmine\block\BlockIdentifier;
+use pocketmine\block\BlockTypeIds;
+use pocketmine\block\BlockTypeInfo;
+use pocketmine\math\Vector3;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\SingletonTrait;
+use SandhyR\MineChess\block\BlockRegister;
 use SandhyR\MineChess\game\GameManager;
 use SandhyR\MineChess\utils\Utils;
 use SandhyR\MineChess\world\WorldConfig;
@@ -40,6 +51,7 @@ class MineChess extends PluginBase {
         $worldConfig = $this->getConfig()->get('world');
         $this->worldConfig = new WorldConfig($worldConfig['name'], $worldConfig['pos1'], $worldConfig['pos2']);
         $this->gameManager = new GameManager();
+        BlockRegister::register();
     }
 
     /**
@@ -48,6 +60,14 @@ class MineChess extends PluginBase {
     public function getGameManager(): GameManager
     {
         return $this->gameManager;
+    }
+
+    /**
+     * @return WorldConfig
+     */
+    public function getWorldConfig(): WorldConfig
+    {
+        return $this->worldConfig;
     }
 
 }

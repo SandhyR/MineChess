@@ -4,3 +4,6 @@ api: 5.0.0
 author: SandhyR
 main: SandhyR\MineChess\MineChess
 src-namespace-prefix: SandhyR\MineChess
+
+depend:
+  - Customies
