@@ -15,7 +15,10 @@ use pocketmine\math\Vector3;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\SingletonTrait;
 use SandhyR\MineChess\block\BlockRegister;
+use SandhyR\MineChess\command\ChessCommand;
 use SandhyR\MineChess\game\GameManager;
+use SandhyR\MineChess\listener\EventListener;
+use SandhyR\MineChess\session\SessionManager;
 use SandhyR\MineChess\utils\Utils;
 use SandhyR\MineChess\world\WorldConfig;
 
@@ -24,6 +27,13 @@ class MineChess extends PluginBase {
 
     private GameManager $gameManager;
     private WorldConfig $worldConfig;
+
+    private SessionManager $sessionManager;
+
+    protected function onLoad(): void
+    {
+        self::setInstance($this);
+    }
 
 
     protected function onEnable(): void
@@ -48,10 +58,14 @@ class MineChess extends PluginBase {
             Utils::copyFolder($this->getFile() . "/resources/world/", $this->getServer()->getDataPath() . "/worlds");
             $this->getServer()->getWorldManager()->loadWorld($this->getConfig()->get('world')['name']);
         }
+        $this->getServer()->getPluginManager()->registerEvents(new EventListener(), $this);
         $worldConfig = $this->getConfig()->get('world');
         $this->worldConfig = new WorldConfig($worldConfig['name'], $worldConfig['pos1'], $worldConfig['pos2']);
         $this->gameManager = new GameManager();
+        $this->sessionManager = new SessionManager();
         BlockRegister::register();
+        $this->getServer()->getCommandMap()->register('chess', new ChessCommand("chess"));
+
     }
 
     /**
@@ -68,6 +82,14 @@ class MineChess extends PluginBase {
     public function getWorldConfig(): WorldConfig
     {
         return $this->worldConfig;
+    }
+
+    /**
+     * @return SessionManager
+     */
+    public function getSessionManager(): SessionManager
+    {
+        return $this->sessionManager;
     }
 
 }

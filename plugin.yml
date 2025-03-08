@@ -7,3 +7,7 @@ src-namespace-prefix: SandhyR\MineChess
 
 depend:
   - Customies
+
+permissions:
+  minechess.command:
+    default: true

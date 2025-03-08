@@ -10,13 +10,9 @@
 - 📊 Game history logging
 
 ## Commands & Permissions
-| Command | Description | Permission |
-|---------|-------------|------------|
-| `/chess challenge <player>` | Challenge a player to a chess match | `minechess.challenge` |
-| `/chess accept` | Accept a chess challenge | `minechess.accept` |
-| `/chess decline` | Decline a chess challenge | `minechess.decline` |
-| `/chess resign` | Forfeit the match | `minechess.resign` |
-| `/chess leaderboard` | View top-ranked players | `minechess.leaderboard` |
+| Command                                    | Description   | Permission          |
+|--------------------------------------------|---------------|---------------------|
+| `/chess` | Open chess UI | `minechess.command` |
 
 ## Configuration
 The `config.yml` file allows you to customize:
